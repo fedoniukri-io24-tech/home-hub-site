@@ -25,5 +25,5 @@ npm run dev
 
 - `src/app/[locale]/` — сторінки (головна, про нас, каталог, моделі дверей, послуги, контакт)
 - `src/dictionaries/` — тексти SV / EN
-- `logos/` — логотипи (`public/logos` → симлінк)
+- `public/logos/` — логотипи для статики (URL `/logos/…`)
 - `public/images/` — фото продукції
