@@ -1,4 +1,5 @@
 import { JsonLd } from "@/components/JsonLd";
+import { ScrollToTopOnNavigate } from "@/components/ScrollToTopOnNavigate";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -24,6 +25,7 @@ export default async function LocaleLayout({
   return (
     <RequestProvider dict={dict}>
       <SavedItemsProvider>
+        <ScrollToTopOnNavigate />
         <JsonLd
           data={[
             websiteJsonLd(locale),

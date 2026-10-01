@@ -6,7 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { Dictionary } from "@/dictionaries";
 import type { DoorModel } from "@/data/models";
 import { formatDoorPrice } from "@/lib/formatPrice";
-import { useHorizontalScrollLock } from "@/hooks/useHorizontalScrollLock";
+import { useDoorGalleryScroll } from "@/hooks/useDoorGalleryScroll";
 import { localePath, type Locale } from "@/lib/i18n";
 import { Pill } from "./Pill";
 import { DoorRequestPill } from "./DoorRequestPill";
@@ -41,31 +41,15 @@ export function DoorDetailView({
   const thumbTrackRef = useRef<HTMLDivElement>(null);
   const pointerStart = useRef<{ x: number; y: number } | null>(null);
 
-  useHorizontalScrollLock(heroGalleryRef);
-  useHorizontalScrollLock(thumbTrackRef);
-
   const priceLabel = `${c.priceFrom} ${formatDoorPrice(locale, model.priceSek)}`;
   const gallery = model.gallery;
 
   useEffect(() => {
-    window.history.replaceState(null, "", window.location.pathname);
-    window.scrollTo(0, 0);
+    setActiveImage(0);
+    setColorIndex(0);
   }, [model.slug]);
 
-  useEffect(() => {
-    const el = heroGalleryRef.current;
-    if (!el || el.clientWidth === 0) return;
-    const target = activeImage * el.clientWidth;
-    if (Math.abs(el.scrollLeft - target) < 2) return;
-    el.scrollTo({ left: target, behavior: "smooth" });
-  }, [activeImage]);
-
-  useEffect(() => {
-    const track = thumbTrackRef.current;
-    if (!track) return;
-    const thumb = track.children[activeImage] as HTMLElement | undefined;
-    thumb?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-  }, [activeImage]);
+  useDoorGalleryScroll(heroGalleryRef, thumbTrackRef, activeImage, gallery.length, model.slug);
 
   function handleHeroScroll() {
     const el = heroGalleryRef.current;
