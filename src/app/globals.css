@@ -1103,7 +1103,7 @@ p {
 
 @media (max-width: 767px) {
   .product-card-gallery {
-    aspect-ratio: 3 / 4.85;
+    aspect-ratio: 4 / 3;
   }
 
   .intro-gallery-photo {
@@ -1111,7 +1111,7 @@ p {
   }
 
   .door-hero-gallery {
-    aspect-ratio: 3 / 4.85;
+    aspect-ratio: 4 / 3;
   }
 
   .door-gallery-thumb {
@@ -1983,7 +1983,7 @@ p {
   position: relative;
   display: flex;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 3;
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-x: contain;
@@ -2102,7 +2102,7 @@ p {
   }
 
   .product-card-gallery {
-    aspect-ratio: 3 / 3.85;
+    aspect-ratio: 4 / 3;
   }
 
   .product-card .product-meta {
@@ -2193,7 +2193,7 @@ p {
   display: flex;
   align-items: stretch;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 3;
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-x: contain;
@@ -2609,7 +2609,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 3;
   border-radius: var(--radius-sm);
   background: transparent;
   overflow: hidden;

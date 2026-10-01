@@ -24,6 +24,8 @@
 .DS_Store
 *.pem
 /tovars/
+*.PNG
+!public/**/*.PNG
 
 # debug
 npm-debug.log*
