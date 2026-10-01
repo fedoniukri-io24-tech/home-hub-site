@@ -23,6 +23,7 @@
 # misc
 .DS_Store
 *.pem
+/tovars/
 
 # debug
 npm-debug.log*

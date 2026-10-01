@@ -41,7 +41,9 @@ export function DoorDetailView({
   const thumbTrackRef = useRef<HTMLDivElement>(null);
   const pointerStart = useRef<{ x: number; y: number } | null>(null);
 
-  const priceLabel = `${c.priceFrom} ${formatDoorPrice(locale, model.priceSek)}`;
+  const priceLabel = `${c.priceFrom} ${formatDoorPrice(locale, model.priceSek, {
+    perSqm: model.category === "flooring",
+  })}`;
   const gallery = model.gallery;
 
   useEffect(() => {
@@ -70,7 +72,7 @@ export function DoorDetailView({
       [c.material, model.material],
       [c.finish, model.finish],
       [c.hardware, model.hardware],
-      [c.priceLabel, formatDoorPrice(locale, model.priceSek)],
+      [c.priceLabel, formatDoorPrice(locale, model.priceSek, { perSqm: model.category === "flooring" })],
       ...model.specs.map((s) => [s.label, s.value] as [string, string]),
     ],
     [c, model, locale],

@@ -86,7 +86,8 @@ export function ProductCard({
           <ArrowIcon />
         </div>
         <p className="product-price">
-          {priceFromLabel} {formatDoorPrice(locale, model.priceSek)}
+          {priceFromLabel}{" "}
+          {formatDoorPrice(locale, model.priceSek, { perSqm: model.category === "flooring" })}
         </p>
         <p className="mt-1.5 text-caption text-muted md:mt-2">
           {model.material} · {model.finish}

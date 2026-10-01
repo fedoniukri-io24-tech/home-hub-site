@@ -19,9 +19,9 @@ export default async function ProjectsPage({ params }: PageProps<"/[locale]/proj
   const p = dict.projects;
 
   const rows = [
-    { image: "oak", title: p.p1Title, text: p.p1Text, value: p.p1Title },
-    { image: "walnut", title: p.p2Title, text: p.p2Text, value: p.p2Title },
-    { image: "glass", title: p.p3Title, text: p.p3Text, value: p.p3Title },
+    { image: "floor-chevron", title: p.p1Title, text: p.p1Text, value: p.p1Title },
+    { image: "door-horizon", title: p.p2Title, text: p.p2Text, value: p.p2Title },
+    { image: "floor-herringbone", title: p.p3Title, text: p.p3Text, value: p.p3Title },
   ] as const;
 
   return (

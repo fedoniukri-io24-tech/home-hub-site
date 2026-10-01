@@ -19,8 +19,7 @@ import type { Locale } from "@/lib/i18n";
 const filterKeys: Exclude<DoorCategory, "all">[] = [
   "interior",
   "hidden",
-  "entrance",
-  "sliding",
+  "flooring",
 ];
 
 function CatalogPriceRangeSlider({

@@ -123,8 +123,7 @@ const sv = {
       all: "Alla modeller",
       interior: "Innerdörrar",
       hidden: "Dolda dörrar",
-      entrance: "Ytterdörrar",
-      sliding: "Skjutdörrar",
+      flooring: "Golv",
     },
     material: "Material",
     finish: "Yta",
@@ -132,8 +131,8 @@ const sv = {
     priceFrom: "från",
     priceLabel: "Pris",
     priceNote:
-      "Priset avser standardmått och exkluderar montering. Slutligt pris bekräftas i offert efter mått och specifikation.",
-    note: "Modeller och bilder är exempel. Material, mått, tillgänglighet och pris bekräftas av leverantören.",
+      "Priset avser standardmått (dörrar) eller från-pris per m² (golv) och exkluderar montering. Slutligt pris bekräftas i offert efter mått och specifikation.",
+    note: "Material, mått, tillgänglighet och pris bekräftas av leverantören. Golvpriser anges från per m².",
   },
   doorPage: {
     colorLabel: "Välj färg",
@@ -434,8 +433,7 @@ const en: Dictionary = {
       all: "All models",
       interior: "Interior doors",
       hidden: "Hidden doors",
-      entrance: "Entrance doors",
-      sliding: "Sliding doors",
+      flooring: "Flooring",
     },
     material: "Material",
     finish: "Surface",
@@ -443,8 +441,8 @@ const en: Dictionary = {
     priceFrom: "from",
     priceLabel: "Price",
     priceNote:
-      "Price is for standard sizes and excludes installation. Final price is confirmed in the quote after measurements and specification.",
-    note: "Models and images are examples. Material, sizes, availability and price are confirmed by the supplier.",
+      "Price is for standard sizes (doors) or from-price per m² (flooring) and excludes installation. Final price is confirmed in the quote after measurements and specification.",
+    note: "Material, sizes, availability and price are confirmed by the supplier. Flooring prices are from per m².",
   },
   doorPage: {
     colorLabel: "Choose colour",

@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/catalog/
     locale,
     path: `/catalog/${slug}`,
     title: model.name,
-    description: `${model.description} ${dict.catalog.priceFrom} ${formatDoorPrice(locale, model.priceSek)}.`,
+    description: `${model.description} ${dict.catalog.priceFrom} ${formatDoorPrice(locale, model.priceSek, { perSqm: model.category === "flooring" })}.`,
   });
 }
 

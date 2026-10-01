@@ -18,8 +18,7 @@ import { ProductCard } from "./ProductCard";
 const filterKeys: Exclude<DoorCategory, "all">[] = [
   "interior",
   "hidden",
-  "entrance",
-  "sliding",
+  "flooring",
 ];
 
 function SearchIcon() {

@@ -102,7 +102,10 @@ export function SavedItemsPanel({
                   <span className="door-saved-item-body">
                     <span className="door-saved-item-name">{model.name}</span>
                     <span className="door-saved-item-meta text-caption text-muted">
-                      {model.label} · {c.priceFrom} {formatDoorPrice(locale, model.priceSek)}
+                      {model.label} · {c.priceFrom}{" "}
+                      {formatDoorPrice(locale, model.priceSek, {
+                        perSqm: model.category === "flooring",
+                      })}
                       {colorName ? ` · ${colorName}` : null}
                     </span>
                     {isPage ? (

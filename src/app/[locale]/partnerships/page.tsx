@@ -41,7 +41,7 @@ export default async function PartnershipsPage({
       <section className="editorial editorial--partnerships site-section">
         <div className="editorial-media">
           <Image
-            src="/images/handle.png"
+            src="/images/door-ash-glass.png"
             alt=""
             fill
             className="object-cover object-center"

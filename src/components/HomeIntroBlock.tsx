@@ -2,9 +2,9 @@ import Image from "next/image";
 import { Em } from "./Em";
 
 const introDoors = [
-  { src: "/images/oak.png", alt: "Oak Natural" },
-  { src: "/images/walnut.png", alt: "Walnut Pure" },
-  { src: "/images/invisible.png", alt: "Invisible Ivory" },
+  { src: "/images/door-horizon.png", alt: "Horizon Soft" },
+  { src: "/images/door-ash-glass.png", alt: "Ash Glass Line" },
+  { src: "/images/door-invisible-greige.png", alt: "Invisible Greige" },
 ] as const;
 
 export function HomeIntroBlock({
