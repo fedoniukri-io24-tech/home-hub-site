@@ -1,0 +1,12 @@
+"use client";
+
+import type { Dictionary } from "@/dictionaries";
+import { Pill } from "./Pill";
+import { useRequest } from "@/context/RequestContext";
+
+export function PartnershipCta({ dict }: { dict: Dictionary }) {
+  const p = dict.partnerships;
+  const { openRequest } = useRequest();
+
+  return <Pill onClick={() => openRequest(p.breadcrumb)}>{p.cta}</Pill>;
+}
