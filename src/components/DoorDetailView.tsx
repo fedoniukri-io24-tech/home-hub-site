@@ -39,7 +39,6 @@ export function DoorDetailView({
   const [galleryOpen, setGalleryOpen] = useState(false);
   const heroGalleryRef = useRef<HTMLDivElement>(null);
   const thumbTrackRef = useRef<HTMLDivElement>(null);
-  const pointerStart = useRef<{ x: number; y: number } | null>(null);
 
   const priceLabel = `${c.priceFrom} ${formatDoorPrice(locale, model.priceSek, {
     perSqm: model.category === "flooring",
@@ -100,28 +99,7 @@ export function DoorDetailView({
           <div
             ref={heroGalleryRef}
             className="door-hero-main door-hero-gallery"
-            aria-label={d.openGallery}
             onScroll={handleHeroScroll}
-            onPointerDown={(e) => {
-              pointerStart.current = { x: e.clientX, y: e.clientY };
-            }}
-            onClick={(e) => {
-              const start = pointerStart.current;
-              if (start) {
-                const dx = Math.abs(e.clientX - start.x);
-                const dy = Math.abs(e.clientY - start.y);
-                if (dx > 10 || dy > 10) return;
-              }
-              openGalleryModal();
-            }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                openGalleryModal();
-              }
-            }}
-            role="button"
-            tabIndex={0}
           >
             {gallery.map((key, index) => (
               <div key={`${key}-${index}`} className="door-hero-slide">
@@ -144,6 +122,14 @@ export function DoorDetailView({
                 ← →
               </span>
             ) : null}
+            <button
+              type="button"
+              className="door-hero-gallery-open"
+              aria-label={d.openGallery}
+              onClick={openGalleryModal}
+            >
+              ⤢
+            </button>
           </div>
           <div
             ref={thumbTrackRef}

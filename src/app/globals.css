@@ -2196,15 +2196,13 @@ p {
   aspect-ratio: 3 / 4;
   overflow-x: auto;
   overflow-y: hidden;
-  overscroll-behavior: contain;
-  overscroll-behavior-y: none;
+  overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  touch-action: pan-x pinch-zoom;
   border-radius: var(--radius-md);
   background: transparent;
-  cursor: pointer;
+  cursor: default;
 }
 
 .door-hero-gallery::-webkit-scrollbar {
@@ -2227,6 +2225,28 @@ p {
   bottom: 0.625rem;
 }
 
+.door-hero-gallery-open {
+  position: absolute;
+  right: 0.625rem;
+  top: 0.625rem;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgb(250 247 241 / 92%);
+  color: var(--ink);
+  font-size: 1.125rem;
+  line-height: 1;
+  backdrop-filter: blur(8px);
+}
+
+.door-hero-gallery-open:hover {
+  border-color: var(--muted-soft);
+}
+
 .door-hero-image {
   width: 100% !important;
   height: 100% !important;
@@ -2241,12 +2261,10 @@ p {
   gap: 0.625rem;
   overflow-x: auto;
   overflow-y: hidden;
-  overscroll-behavior: contain;
-  overscroll-behavior-y: none;
+  overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   padding-bottom: 0.25rem;
   -webkit-overflow-scrolling: touch;
-  touch-action: pan-x pinch-zoom;
   scrollbar-width: thin;
 }
 
