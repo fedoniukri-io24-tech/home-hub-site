@@ -11,7 +11,7 @@ export function HomeDetailBand({ dict }: { dict: Dictionary }) {
   return (
     <div className="site-section--band">
       <DetailBand
-        imageSrc="/images/door-horizon.png"
+        imageSrc="/images/handle.png"
         title={h.detailTitle}
         titleEm={h.detailTitleEm}
         ctaLabel={h.detailCta}
