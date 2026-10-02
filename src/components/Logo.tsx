@@ -9,14 +9,11 @@ type LogoProps = {
   className?: string;
 };
 
-const WORDMARK_WIDTH = 560;
-const WORDMARK_HEIGHT = 203;
+const WORDMARK_WIDTH = 640;
+const WORDMARK_HEIGHT = 223;
 
 export function Logo({ locale, variant = "dark", className = "" }: LogoProps) {
-  const src =
-    variant === "light"
-      ? "/logos/wordmark-light.webp"
-      : "/logos/wordmark-dark.webp";
+  const src = "/logos/wordmark-dark.webp";
 
   return (
     <Link
