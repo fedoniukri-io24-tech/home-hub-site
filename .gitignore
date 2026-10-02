@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 /tovars/
+/_logo_download/
+/_logo_png/
+/.venv-gdown/
 *.PNG
 !public/**/*.PNG
 

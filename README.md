@@ -25,5 +25,6 @@ npm run dev
 
 - `src/app/[locale]/` — сторінки (головна, про нас, каталог, моделі дверей, послуги, контакт)
 - `src/dictionaries/` — тексти SV / EN
-- `public/logos/` — логотипи для статики (URL `/logos/…`)
+- `public/logos/` — wordmark (`wordmark-dark.webp`, `wordmark-light.webp`)
+- `public/icon.png`, `public/apple-touch-icon.png` — favicon
 - `public/images/` — фото продукції
