@@ -1,9 +1,12 @@
 import { ContactForm } from "@/components/ContactForm";
+import { JsonLd } from "@/components/JsonLd";
 import { PageHead } from "@/components/PageHead";
 import { ShowroomVisitSection } from "@/components/ShowroomVisitSection";
 import { getDictionary } from "@/dictionaries";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { generateLocalePageMetadata } from "@/lib/seo/generatePageMetadata";
+import { breadcrumbJsonLd, contactPageJsonLd } from "@/lib/seo/jsonLd";
+import { getSeoForPage } from "@/lib/seo/pageMeta";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/contact">) {
@@ -17,9 +20,19 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
   const locale = localeParam as Locale;
   const dict = getDictionary(locale);
   const c = dict.contactPage;
+  const seo = getSeoForPage(locale, "contact");
 
   return (
     <>
+      <JsonLd
+        data={[
+          contactPageJsonLd(locale, seo.description),
+          breadcrumbJsonLd(locale, [
+            { name: dict.nav.home, path: "" },
+            { name: c.breadcrumb, path: "/contact" },
+          ]),
+        ]}
+      />
       <PageHead
         locale={locale}
         homeLabel={dict.nav.home}

@@ -8,11 +8,52 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"],
+        allow: ["/", "/llms.txt", "/llms-full.txt"],
+        disallow: [
+          "/api/",
+          "/admin/",
+          "/_next/",
+          "/*/catalog/saved",
+          "/catalog/saved",
+        ],
+      },
+      {
+        userAgent: "GPTBot",
+        allow: ["/", "/llms.txt", "/llms-full.txt"],
+        disallow: ["/api/", "/admin/"],
+      },
+      {
+        userAgent: "ChatGPT-User",
+        allow: ["/", "/llms.txt", "/llms-full.txt"],
+        disallow: ["/api/", "/admin/"],
+      },
+      {
+        userAgent: "Google-Extended",
+        allow: ["/", "/llms.txt", "/llms-full.txt"],
+        disallow: ["/api/", "/admin/"],
+      },
+      {
+        userAgent: "anthropic-ai",
+        allow: ["/", "/llms.txt", "/llms-full.txt"],
+        disallow: ["/api/", "/admin/"],
+      },
+      {
+        userAgent: "ClaudeBot",
+        allow: ["/", "/llms.txt", "/llms-full.txt"],
+        disallow: ["/api/", "/admin/"],
+      },
+      {
+        userAgent: "PerplexityBot",
+        allow: ["/", "/llms.txt", "/llms-full.txt"],
+        disallow: ["/api/", "/admin/"],
       },
     ],
-    sitemap: `${siteUrl}/sitemap.xml`,
-    host: siteUrl,
+    sitemap: [
+      `${siteUrl}/sitemap.xml`,
+      `${siteUrl}/sitemaps/pages.xml`,
+      `${siteUrl}/sitemaps/products.xml`,
+      `${siteUrl}/sitemaps/images.xml`,
+    ],
+    host: siteUrl.replace(/^https?:\/\//, ""),
   };
 }

@@ -58,7 +58,10 @@ export function middleware(request: NextRequest) {
     pathname.startsWith("/api") ||
     pathname === "/robots.txt" ||
     pathname === "/sitemap.xml" ||
+    pathname.startsWith("/sitemaps/") ||
     pathname === "/llms.txt" ||
+    pathname === "/llms-full.txt" ||
+    pathname === "/manifest.webmanifest" ||
     pathname.includes(".")
   ) {
     return NextResponse.next();
@@ -71,7 +74,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
   if (isLocale(segment)) {
-    return NextResponse.next();
+    const response = NextResponse.next();
+    response.headers.set("x-locale", segment);
+    return response;
   }
 
   const url = request.nextUrl.clone();

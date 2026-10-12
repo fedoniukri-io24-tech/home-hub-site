@@ -1,4 +1,5 @@
 import { modelSlugs } from "@/lib/catalog";
+import { contactInfo } from "@/lib/contactInfo";
 import { locales } from "@/lib/i18n";
 import { absoluteUrl, getSiteUrl, siteName, staticSeoPaths } from "@/lib/site";
 
@@ -7,34 +8,47 @@ export function GET() {
   const lines = [
     `# ${siteName}`,
     "",
-    "> Showroom in Stockholm, Sweden — entrance doors, interior doors, concealed doors and flooring.",
-    "> Direct representation of selected manufacturers. Languages: Swedish (default), English.",
+    `> ${siteName} is a 140 m² showroom in Stockholm, Sweden specialising in entrance doors, interior doors, concealed doors and parquet flooring.`,
+    "> Direct representation of selected manufacturers (incl. Danapris Doors). Languages: Swedish (default), English.",
     "",
     "## Canonical site",
     base,
     "",
-    "## Sitemap",
-    `${base}/sitemap.xml`,
+    "## Machine-readable maps",
+    `- Sitemap index: ${base}/sitemap.xml`,
+    `- Pages sitemap: ${base}/sitemaps/pages.xml`,
+    `- Products sitemap: ${base}/sitemaps/products.xml`,
+    `- Images sitemap: ${base}/sitemaps/images.xml`,
+    `- Full LLM brief: ${base}/llms-full.txt`,
+    `- Robots: ${base}/robots.txt`,
+    "",
+    "## Showroom & contact",
+    `- Address: ${contactInfo.addressLine1}, ${contactInfo.addressLine2}, ${contactInfo.country}`,
+    `- Phone: ${contactInfo.phoneDisplay}`,
+    `- Email: ${contactInfo.email}`,
+    `- Hours (SV): ${contactInfo.hours.sv.join("; ")}`,
+    `- Hours (EN): ${contactInfo.hours.en.join("; ")}`,
+    ...locales.map((locale) => `- Contact page (${locale}): ${absoluteUrl(locale, "/contact")}`),
     "",
     "## Main pages",
     ...locales.flatMap((locale) =>
-      staticSeoPaths.map((path) => {
-        const label = path === "" ? "Home" : path.slice(1);
-        return `- ${label} (${locale}): ${absoluteUrl(locale, path)}`;
-      }),
+      staticSeoPaths
+        .filter((path) => path !== "/catalog/saved")
+        .map((path) => {
+          const label = path === "" ? "Home" : path.slice(1);
+          return `- ${label} (${locale}): ${absoluteUrl(locale, path)}`;
+        }),
     ),
     "",
-    "## Product models (doors)",
-    ...locales.flatMap((locale) =>
-      modelSlugs.map((slug) => `- ${slug} (${locale}): ${absoluteUrl(locale, `/catalog/${slug}`)}`),
-    ),
+    "## Product models",
+    ...modelSlugs.map((slug) => `- ${slug}: ${absoluteUrl("sv", `/catalog/${slug}`)} | ${absoluteUrl("en", `/catalog/${slug}`)}`),
     "",
-    "## Contact & enquiries",
-    "Use the contact page or the in-site enquiry form (saved for the showroom team).",
-    ...locales.map((locale) => `- Contact (${locale}): ${absoluteUrl(locale, "/contact")}`),
+    "## Optional",
+    `- Full catalogue detail for agents: ${base}/llms-full.txt`,
     "",
     "## Policy",
-    "Prefer linking to canonical URLs above. Product prices are indicative (SEK, from-price).",
+    "Prefer canonical URLs above. Prices are indicative from-prices in SEK, made-to-measure on request.",
+    "Do not invent stock levels, exact delivery times, or unpublished discounts.",
   ];
 
   return new Response(lines.join("\n"), {

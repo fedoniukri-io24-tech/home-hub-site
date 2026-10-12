@@ -1,9 +1,12 @@
 import { ContactSection } from "@/components/ContactSection";
+import { JsonLd } from "@/components/JsonLd";
 import { PageHead } from "@/components/PageHead";
 import { ServiceCard } from "@/components/ServiceCard";
 import { getDictionary } from "@/dictionaries";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { generateLocalePageMetadata } from "@/lib/seo/generatePageMetadata";
+import { breadcrumbJsonLd, faqPageJsonLd, webPageJsonLd } from "@/lib/seo/jsonLd";
+import { getSeoForPage } from "@/lib/seo/pageMeta";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/services">) {
@@ -18,9 +21,28 @@ export default async function ServicesPage({ params }: PageProps<"/[locale]/serv
   const dict = getDictionary(locale);
   const s = dict.services;
   const h = dict.home;
+  const seo = getSeoForPage(locale, "services");
 
   return (
     <>
+      <JsonLd
+        data={[
+          webPageJsonLd(locale, {
+            path: "/services",
+            name: seo.title,
+            description: seo.description,
+          }),
+          breadcrumbJsonLd(locale, [
+            { name: dict.nav.home, path: "" },
+            { name: s.breadcrumb, path: "/services" },
+          ]),
+          faqPageJsonLd([
+            { question: s.faq1q, answer: s.faq1a },
+            { question: s.faq2q, answer: s.faq2a },
+            { question: s.faq3q, answer: s.faq3a },
+          ]),
+        ]}
+      />
       <PageHead
         locale={locale}
         homeLabel={dict.nav.home}

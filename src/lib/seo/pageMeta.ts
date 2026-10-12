@@ -22,6 +22,7 @@ const pageKeys = {
     path: "/catalog/saved",
     title: `${d.savedPage.title} ${d.savedPage.titleEm}`.replace(/\s+/g, " ").trim(),
     description: d.savedPage.lead,
+    noIndex: true as const,
   }),
   contact: (d: ReturnType<typeof getDictionary>) => ({
     path: "/contact",

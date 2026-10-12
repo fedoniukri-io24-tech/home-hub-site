@@ -1,9 +1,12 @@
 import { ContactSection } from "@/components/ContactSection";
+import { JsonLd } from "@/components/JsonLd";
 import { PageHead } from "@/components/PageHead";
 import { ProjectRow } from "@/components/ProjectRow";
 import { getDictionary } from "@/dictionaries";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { generateLocalePageMetadata } from "@/lib/seo/generatePageMetadata";
+import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/seo/jsonLd";
+import { getSeoForPage } from "@/lib/seo/pageMeta";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/projects">) {
@@ -17,6 +20,7 @@ export default async function ProjectsPage({ params }: PageProps<"/[locale]/proj
   const locale = localeParam as Locale;
   const dict = getDictionary(locale);
   const p = dict.projects;
+  const seo = getSeoForPage(locale, "projects");
 
   const rows = [
     { image: "floor-chevron", title: p.p1Title, text: p.p1Text, value: p.p1Title },
@@ -26,6 +30,19 @@ export default async function ProjectsPage({ params }: PageProps<"/[locale]/proj
 
   return (
     <>
+      <JsonLd
+        data={[
+          webPageJsonLd(locale, {
+            path: "/projects",
+            name: seo.title,
+            description: seo.description,
+          }),
+          breadcrumbJsonLd(locale, [
+            { name: dict.nav.home, path: "" },
+            { name: p.breadcrumb, path: "/projects" },
+          ]),
+        ]}
+      />
       <PageHead
         locale={locale}
         homeLabel={dict.nav.home}

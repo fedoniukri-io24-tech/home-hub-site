@@ -2,11 +2,14 @@ import Image from "next/image";
 import { ContactSection } from "@/components/ContactSection";
 import { ShowroomVisitSection } from "@/components/ShowroomVisitSection";
 import { Em } from "@/components/Em";
+import { JsonLd } from "@/components/JsonLd";
 import { PageHead } from "@/components/PageHead";
 import { ServiceCard } from "@/components/ServiceCard";
 import { getDictionary } from "@/dictionaries";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { generateLocalePageMetadata } from "@/lib/seo/generatePageMetadata";
+import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/seo/jsonLd";
+import { getSeoForPage } from "@/lib/seo/pageMeta";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/about">) {
@@ -20,9 +23,23 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
   const locale = localeParam as Locale;
   const dict = getDictionary(locale);
   const a = dict.about;
+  const seo = getSeoForPage(locale, "about");
 
   return (
     <>
+      <JsonLd
+        data={[
+          webPageJsonLd(locale, {
+            path: "/about",
+            name: seo.title,
+            description: seo.description,
+          }),
+          breadcrumbJsonLd(locale, [
+            { name: dict.nav.home, path: "" },
+            { name: a.breadcrumb, path: "/about" },
+          ]),
+        ]}
+      />
       <PageHead
         locale={locale}
         homeLabel={dict.nav.home}

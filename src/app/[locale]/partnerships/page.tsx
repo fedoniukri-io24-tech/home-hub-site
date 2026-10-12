@@ -1,10 +1,13 @@
 import Image from "next/image";
+import { JsonLd } from "@/components/JsonLd";
 import { PageHead } from "@/components/PageHead";
 import { PartnershipCta } from "@/components/PartnershipCta";
 import { ServiceCard } from "@/components/ServiceCard";
 import { getDictionary } from "@/dictionaries";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { generateLocalePageMetadata } from "@/lib/seo/generatePageMetadata";
+import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/seo/jsonLd";
+import { getSeoForPage } from "@/lib/seo/pageMeta";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/partnerships">) {
@@ -20,9 +23,23 @@ export default async function PartnershipsPage({
   const locale = localeParam as Locale;
   const dict = getDictionary(locale);
   const p = dict.partnerships;
+  const seo = getSeoForPage(locale, "partnerships");
 
   return (
     <>
+      <JsonLd
+        data={[
+          webPageJsonLd(locale, {
+            path: "/partnerships",
+            name: seo.title,
+            description: seo.description,
+          }),
+          breadcrumbJsonLd(locale, [
+            { name: dict.nav.home, path: "" },
+            { name: p.breadcrumb, path: "/partnerships" },
+          ]),
+        ]}
+      />
       <PageHead
         locale={locale}
         homeLabel={dict.nav.home}

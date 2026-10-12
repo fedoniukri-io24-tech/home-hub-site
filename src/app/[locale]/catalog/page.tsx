@@ -2,11 +2,18 @@ import { Suspense } from "react";
 import { CatalogClient } from "@/components/CatalogClient";
 import { CatalogLegacyRedirect } from "@/components/CatalogLegacyRedirect";
 import { ContactSection } from "@/components/ContactSection";
+import { JsonLd } from "@/components/JsonLd";
 import { PageHead } from "@/components/PageHead";
 import { getDictionary } from "@/dictionaries";
 import { getCatalogCategories, getModels } from "@/lib/catalog";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { generateLocalePageMetadata } from "@/lib/seo/generatePageMetadata";
+import {
+  breadcrumbJsonLd,
+  collectionPageJsonLd,
+  itemListJsonLd,
+} from "@/lib/seo/jsonLd";
+import { getSeoForPage } from "@/lib/seo/pageMeta";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/catalog">) {
@@ -22,9 +29,32 @@ export default async function CatalogPage({ params }: PageProps<"/[locale]/catal
   const c = dict.catalog;
   const models = getModels(locale);
   const categories = getCatalogCategories(locale);
+  const seo = getSeoForPage(locale, "catalog");
 
   return (
     <>
+      <JsonLd
+        data={[
+          collectionPageJsonLd(locale, {
+            path: "/catalog",
+            name: seo.title,
+            description: seo.description,
+          }),
+          breadcrumbJsonLd(locale, [
+            { name: dict.nav.home, path: "" },
+            { name: c.breadcrumb, path: "/catalog" },
+          ]),
+          itemListJsonLd(
+            locale,
+            seo.title,
+            models.map((m) => ({
+              name: m.name,
+              path: `/catalog/${m.slug}`,
+              image: m.image,
+            })),
+          ),
+        ]}
+      />
       <PageHead
         locale={locale}
         homeLabel={dict.nav.home}

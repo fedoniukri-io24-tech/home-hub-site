@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { locales } from "@/lib/i18n";
-import { localePath } from "@/lib/i18n";
+import { locales, localePath } from "@/lib/i18n";
+import { siteName } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: { absolute: `404 | ${siteName}` },
+  description: "Page not found / Sidan hittades inte.",
+  robots: { index: false, follow: true },
+};
 
 export default function NotFound() {
   return (
@@ -14,7 +21,7 @@ export default function NotFound() {
         <br />
         Sidan kan ha flyttats eller länken är felaktig.
       </p>
-      <div className="flex flex-wrap items-center justify-center gap-3">
+      <nav aria-label="404 recovery" className="flex flex-wrap items-center justify-center gap-3">
         {locales.map((locale) => (
           <Link
             key={locale}
@@ -24,7 +31,19 @@ export default function NotFound() {
             {locale === "sv" ? "Till startsidan (SV)" : "Go to home (EN)"}
           </Link>
         ))}
-      </div>
+        <Link
+          href={localePath("sv", "/catalog")}
+          className="pill pill-solid border-0 px-5 py-3 text-sm no-underline"
+        >
+          Katalog / Catalogue
+        </Link>
+        <Link
+          href={localePath("sv", "/contact")}
+          className="pill pill-outline border px-5 py-3 text-sm no-underline"
+        >
+          Kontakt / Contact
+        </Link>
+      </nav>
     </section>
   );
 }

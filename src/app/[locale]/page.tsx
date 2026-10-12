@@ -4,12 +4,15 @@ import { Em } from "@/components/Em";
 import { HomeDetailBand } from "@/components/HomeDetailBand";
 import { HomeIntroBlock } from "@/components/HomeIntroBlock";
 import { HomeDoorProducts } from "@/components/HomeDoorProducts";
+import { JsonLd } from "@/components/JsonLd";
 import { Pill } from "@/components/Pill";
 import { ServiceCard } from "@/components/ServiceCard";
 import { getDictionary } from "@/dictionaries";
 import { getCatalogCategories, getModels } from "@/lib/catalog";
 import { isLocale, localePath, type Locale } from "@/lib/i18n";
 import { generateLocalePageMetadata } from "@/lib/seo/generatePageMetadata";
+import { itemListJsonLd, webPageJsonLd } from "@/lib/seo/jsonLd";
+import { getSeoForPage } from "@/lib/seo/pageMeta";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]">) {
@@ -25,9 +28,29 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const h = dict.home;
   const models = getModels(locale);
   const categories = getCatalogCategories(locale);
+  const seo = getSeoForPage(locale, "home");
+  const featured = models.filter((m) => m.category === "interior").slice(0, 8);
 
   return (
     <>
+      <JsonLd
+        data={[
+          webPageJsonLd(locale, {
+            path: "",
+            name: seo.title,
+            description: seo.description,
+          }),
+          itemListJsonLd(
+            locale,
+            locale === "sv" ? "Utvalda dörrar" : "Featured doors",
+            featured.map((m) => ({
+              name: m.name,
+              path: `/catalog/${m.slug}`,
+              image: m.image,
+            })),
+          ),
+        ]}
+      />
       <section className="hero site-section--flush">
         <div className="hero-copy">
           <div className="hero-copy-inner">

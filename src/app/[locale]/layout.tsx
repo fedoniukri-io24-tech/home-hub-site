@@ -28,8 +28,8 @@ export default async function LocaleLayout({
         <ScrollToTopOnNavigate />
         <JsonLd
           data={[
-            websiteJsonLd(locale),
             organizationJsonLd(locale, dict.meta.description),
+            websiteJsonLd(locale),
           ]}
         />
         <Header locale={locale} dict={dict} />
