@@ -8,6 +8,7 @@ import type { DoorModel } from "@/data/models";
 import { useSavedItems } from "@/context/SavedItemsContext";
 import { formatDoorPrice } from "@/lib/formatPrice";
 import { localePath, type Locale } from "@/lib/i18n";
+import { mediaUrl } from "@/lib/mediaUrl";
 
 export function SavedItemsPanel({
   locale,
@@ -92,7 +93,7 @@ export function SavedItemsPanel({
                 <Link href={href} className="door-saved-item-link">
                   <span className="door-saved-item-media">
                     <Image
-                      src={`/images/${model.image}.png`}
+                      src={mediaUrl(model.image)}
                       alt=""
                       width={isPage ? 120 : 88}
                       height={isPage ? 150 : 112}

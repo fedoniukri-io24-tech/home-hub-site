@@ -20,7 +20,7 @@ export default async function ProjectsPage({ params }: PageProps<"/[locale]/proj
 
   const rows = [
     { image: "floor-chevron", title: p.p1Title, text: p.p1Text, value: p.p1Title },
-    { image: "door-horizon", title: p.p2Title, text: p.p2Text, value: p.p2Title },
+    { image: "/images/doors/aurelia-01/01.jpg", title: p.p2Title, text: p.p2Text, value: p.p2Title },
     { image: "floor-herringbone", title: p.p3Title, text: p.p3Text, value: p.p3Title },
   ] as const;
 

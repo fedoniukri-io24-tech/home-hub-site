@@ -57,7 +57,11 @@ export function productJsonLd(locale: Locale, model: DoorModel) {
     "@type": "Product",
     name: model.name,
     description: model.description,
-    image: `${getSiteUrl()}/images/${model.image}.png`,
+    image: model.image.startsWith("/")
+      ? `${getSiteUrl()}${model.image}`
+      : model.image.includes(".")
+        ? `${getSiteUrl()}/uploads/${model.image}`
+        : `${getSiteUrl()}/images/${model.image}.png`,
     category: model.label,
     brand: { "@type": "Brand", name: siteName },
     offers: {

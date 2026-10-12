@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Dictionary } from "@/dictionaries";
-import type { DoorCategory, DoorModel } from "@/data/models";
+import type { CatalogCategoryOption, DoorCategory, DoorModel } from "@/data/models";
 import type { Locale } from "@/lib/i18n";
 import {
   countActiveCatalogFilters,
@@ -14,12 +14,6 @@ import {
 import { CatalogFilterChip } from "./CatalogFilterSections";
 import { CatalogFilterSheet } from "./CatalogFilterSheet";
 import { ProductCard } from "./ProductCard";
-
-const filterKeys: Exclude<DoorCategory, "all">[] = [
-  "interior",
-  "hidden",
-  "flooring",
-];
 
 function SearchIcon() {
   return (
@@ -39,6 +33,7 @@ export function CatalogProductGrid({
   locale,
   dict,
   models,
+  categories,
   showCount = true,
   showNote = false,
   filterLayout = "toolbar",
@@ -46,6 +41,7 @@ export function CatalogProductGrid({
   locale: Locale;
   dict: Dictionary;
   models: DoorModel[];
+  categories: CatalogCategoryOption[];
   showCount?: boolean;
   showNote?: boolean;
   filterLayout?: "toolbar" | "scroll";
@@ -95,13 +91,18 @@ export function CatalogProductGrid({
     setDraftFilters(defaults);
   }
 
-  const categoryChips = (["all", ...filterKeys] as DoorCategory[]).map((key) => (
+  const categoryChips = (
+    [
+      { slug: "all" as const, name: c.filters.all },
+      ...categories.map((cat) => ({ slug: cat.slug as DoorCategory, name: cat.name })),
+    ] as { slug: DoorCategory; name: string }[]
+  ).map((cat) => (
     <CatalogFilterChip
-      key={key}
-      active={appliedFilters.category === key}
-      onClick={() => setAppliedFilters((prev) => ({ ...prev, category: key }))}
+      key={cat.slug}
+      active={appliedFilters.category === cat.slug}
+      onClick={() => setAppliedFilters((prev) => ({ ...prev, category: cat.slug }))}
     >
-      {c.filters[key]}
+      {cat.name}
     </CatalogFilterChip>
   ));
 
@@ -208,6 +209,7 @@ export function CatalogProductGrid({
           locale={locale}
           dict={dict}
           models={models}
+          categories={categories}
           searchQuery={searchQuery}
           draft={draftFilters}
           onDraftChange={setDraftFilters}

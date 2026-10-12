@@ -7,7 +7,7 @@ import { HomeDoorProducts } from "@/components/HomeDoorProducts";
 import { Pill } from "@/components/Pill";
 import { ServiceCard } from "@/components/ServiceCard";
 import { getDictionary } from "@/dictionaries";
-import { getModels } from "@/data/models";
+import { getCatalogCategories, getModels } from "@/lib/catalog";
 import { isLocale, localePath, type Locale } from "@/lib/i18n";
 import { generateLocalePageMetadata } from "@/lib/seo/generatePageMetadata";
 import { notFound } from "next/navigation";
@@ -24,6 +24,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const dict = getDictionary(locale);
   const h = dict.home;
   const models = getModels(locale);
+  const categories = getCatalogCategories(locale);
 
   return (
     <>
@@ -59,7 +60,12 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             {h.featuredCta}
           </Pill>
         </div>
-        <HomeDoorProducts locale={locale} dict={dict} models={models} />
+        <HomeDoorProducts
+          locale={locale}
+          dict={dict}
+          models={models}
+          categories={categories}
+        />
       </section>
 
       <HomeDetailBand dict={dict} />

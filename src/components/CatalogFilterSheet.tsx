@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import type { Dictionary } from "@/dictionaries";
-import type { DoorModel } from "@/data/models";
+import type { CatalogCategoryOption, DoorModel } from "@/data/models";
 import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
 import type { Locale } from "@/lib/i18n";
 import { filterCatalogModels, type CatalogFilterState } from "@/lib/catalogFilter";
@@ -13,6 +13,7 @@ type CatalogFilterSheetProps = {
   locale: Locale;
   dict: Dictionary;
   models: DoorModel[];
+  categories: CatalogCategoryOption[];
   searchQuery: string;
   draft: CatalogFilterState;
   onDraftChange: (next: CatalogFilterState) => void;
@@ -26,6 +27,7 @@ export function CatalogFilterSheet({
   locale,
   dict,
   models,
+  categories,
   searchQuery,
   draft,
   onDraftChange,
@@ -72,6 +74,7 @@ export function CatalogFilterSheet({
             locale={locale}
             dict={dict}
             models={models}
+            categories={categories}
             value={draft}
             onChange={onDraftChange}
           />

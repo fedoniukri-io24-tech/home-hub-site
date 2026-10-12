@@ -1,4 +1,4 @@
-import { modelSlugs } from "@/data/models";
+import { modelSlugs } from "@/lib/catalog";
 import { locales } from "@/lib/i18n";
 import { absoluteUrl, getSiteUrl, siteName, staticSeoPaths } from "@/lib/site";
 
@@ -30,7 +30,7 @@ export function GET() {
     ),
     "",
     "## Contact & enquiries",
-    "Use the contact page or the in-site enquiry form (demo: downloads a local file).",
+    "Use the contact page or the in-site enquiry form (saved for the showroom team).",
     ...locales.map((locale) => `- Contact (${locale}): ${absoluteUrl(locale, "/contact")}`),
     "",
     "## Policy",

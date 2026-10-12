@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
+import { mediaUrl } from "@/lib/mediaUrl";
 
 export function PhotoGalleryModal({
   open,
@@ -57,7 +58,7 @@ export function PhotoGalleryModal({
         {images.map((key) => (
           <figure key={key} data-gallery-slide className="photo-gallery-modal-slide">
             <Image
-              src={`/images/${key}.png`}
+              src={mediaUrl(key)}
               alt={title}
               fill
               className="photo-gallery-modal-image"

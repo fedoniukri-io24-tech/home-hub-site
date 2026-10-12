@@ -1,0 +1,147 @@
+"use client";
+
+import Image from "next/image";
+import { useCallback, useState } from "react";
+import { useDropzone } from "react-dropzone";
+import { uploadImages } from "@/lib/admin/uploadImages";
+
+type MediaFile = {
+  filename: string;
+  url: string;
+  size: number;
+  mtime: string;
+};
+
+export default function MediaManager({ initial }: { initial: MediaFile[] }) {
+  const [files, setFiles] = useState(initial);
+  const [uploading, setUploading] = useState(false);
+  const [progress, setProgress] = useState("");
+  const [error, setError] = useState("");
+  const [copied, setCopied] = useState("");
+
+  const refresh = useCallback(async () => {
+    const list = await fetch("/api/admin/uploads").then((r) => r.json());
+    setFiles(Array.isArray(list) ? list : []);
+  }, []);
+
+  const onDrop = useCallback(
+    async (accepted: File[]) => {
+      if (!accepted.length) return;
+      setUploading(true);
+      setError("");
+      try {
+        for (let i = 0; i < accepted.length; i++) {
+          setProgress(`Uploading ${i + 1} / ${accepted.length}…`);
+          await uploadImages([accepted[i]]);
+        }
+        await refresh();
+      } catch (e) {
+        setError(e instanceof Error ? e.message : "Upload failed");
+        await refresh();
+      } finally {
+        setUploading(false);
+        setProgress("");
+      }
+    },
+    [refresh],
+  );
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: { "image/*": [] },
+    multiple: true,
+    disabled: uploading,
+  });
+
+  async function remove(filename: string) {
+    if (!confirm(`Delete ${filename}?`)) return;
+    const res = await fetch(
+      `/api/admin/uploads?filename=${encodeURIComponent(filename)}`,
+      { method: "DELETE" },
+    );
+    if (!res.ok) {
+      alert("Failed to delete");
+      return;
+    }
+    setFiles((prev) => prev.filter((f) => f.filename !== filename));
+  }
+
+  async function copyName(filename: string) {
+    await navigator.clipboard.writeText(filename);
+    setCopied(filename);
+    setTimeout(() => setCopied(""), 1500);
+  }
+
+  return (
+    <div className="space-y-6">
+      <div
+        {...getRootProps()}
+        className={`cursor-pointer rounded-2xl border-2 border-dashed px-6 py-14 text-center transition ${
+          isDragActive
+            ? "border-[#3c2412] bg-[#f5ebe0] dark:border-[#e8d2ba] dark:bg-[#3c2412]/35"
+            : "border-gray-300 bg-[#faf8f5] hover:border-[#3c2412]/45 hover:bg-[#f5ebe0]/50 dark:border-gray-600 dark:bg-gray-900/70 dark:hover:border-[#e8d2ba]/40"
+        } ${uploading ? "pointer-events-none opacity-70" : ""}`}
+      >
+        <input {...getInputProps()} />
+        <p className="text-base font-semibold text-gray-900 dark:text-white">
+          {uploading
+            ? progress || "Uploading…"
+            : isDragActive
+              ? "Drop files to upload"
+              : "Drag & drop files here, or click to browse"}
+        </p>
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          Images are converted to WebP (max width 1600px)
+        </p>
+      </div>
+      {error ? (
+        <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+      ) : null}
+
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {files.map((file) => (
+          <div
+            key={file.filename}
+            className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900"
+          >
+            <div className="relative aspect-4/3 bg-gray-100 dark:bg-gray-800">
+              <Image
+                src={file.url}
+                alt={file.filename}
+                fill
+                className="object-cover"
+                sizes="240px"
+              />
+            </div>
+            <div className="space-y-2 p-3">
+              <p className="truncate text-xs font-medium text-gray-700 dark:text-gray-200">
+                {file.filename}
+              </p>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => copyName(file.filename)}
+                  className="flex-1 rounded-lg border border-gray-300 bg-white px-2 py-1.5 text-xs font-medium text-gray-800 hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-950 dark:text-gray-100 dark:hover:bg-gray-800"
+                >
+                  {copied === file.filename ? "Copied" : "Copy name"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => remove(file.filename)}
+                  className="rounded-lg border border-red-200 px-2 py-1.5 text-xs font-medium text-red-700 hover:bg-red-50 dark:border-red-900/50 dark:text-red-300 dark:hover:bg-red-950/40"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      {files.length === 0 ? (
+        <p className="text-center text-sm text-gray-600 dark:text-gray-300">
+          No uploads yet. Drop files above to get started.
+        </p>
+      ) : null}
+    </div>
+  );
+}

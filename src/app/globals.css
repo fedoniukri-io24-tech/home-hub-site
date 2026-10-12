@@ -1111,12 +1111,12 @@ p {
   }
 
   .door-hero-gallery {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1;
   }
 
   .door-gallery-thumb {
-    width: 3.25rem;
-    height: 4.125rem;
+    width: 3.5rem;
+    height: 3.5rem;
   }
 }
 
@@ -2011,7 +2011,7 @@ p {
 }
 
 .product-card-image {
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
 }
 
@@ -2193,7 +2193,7 @@ p {
   display: flex;
   align-items: stretch;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-x: contain;
@@ -2201,7 +2201,7 @@ p {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   border-radius: var(--radius-md);
-  background: transparent;
+  background: var(--surface-tint, #f3efe8);
   cursor: default;
 }
 
@@ -2251,31 +2251,32 @@ p {
   width: 100% !important;
   height: 100% !important;
   padding: 0;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
 }
 
 .door-gallery-track {
   display: flex;
   flex-wrap: nowrap;
-  gap: 0.625rem;
+  align-items: center;
+  gap: 0.5rem;
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
-  padding-bottom: 0.25rem;
+  padding-bottom: 0.15rem;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
 }
 
 .door-gallery-thumb {
   flex: 0 0 auto;
-  width: 4.75rem;
-  height: 6.25rem;
+  width: 4.25rem;
+  height: 4.25rem;
   overflow: hidden;
   border: 2px solid transparent;
   border-radius: var(--radius-sm);
-  background: transparent;
+  background: var(--surface-tint, #f3efe8);
   padding: 0;
   scroll-snap-align: start;
   cursor: pointer;
@@ -2289,7 +2290,7 @@ p {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
 }
 
@@ -2322,6 +2323,7 @@ p {
 .door-hero-lead {
   margin: 0;
   max-width: 36rem;
+  text-wrap: pretty;
 }
 
 .door-color-picker {
@@ -2807,13 +2809,17 @@ p {
 .door-detail-list {
   margin: 0;
   padding-left: 1.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
   font-size: var(--font-body-sm);
   line-height: 1.65;
   color: var(--muted);
 }
 
 .door-detail-list li {
-  margin-bottom: 0.75rem;
+  margin: 0;
+  text-wrap: pretty;
 }
 
 .door-detail-list li strong {
@@ -2831,9 +2837,10 @@ p {
 }
 
 .door-spec-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: minmax(8rem, 38%) minmax(0, 1fr);
+  align-items: start;
+  column-gap: 1.25rem;
   padding: 0.75rem 0;
   border-bottom: 1px solid var(--line);
 }
@@ -2844,8 +2851,9 @@ p {
 
 .door-spec-row dd {
   margin: 0;
-  text-align: right;
+  text-align: left;
   color: var(--ink);
+  overflow-wrap: anywhere;
 }
 
 .door-related-grid {
@@ -2856,8 +2864,8 @@ p {
 
 @media (min-width: 768px) {
   .door-hero {
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    gap: clamp(2rem, 4vw, 3.5rem);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(2rem, 4vw, 3.25rem);
     align-items: start;
   }
 
@@ -2867,9 +2875,9 @@ p {
   }
 
   .door-hero-gallery {
-    aspect-ratio: auto;
-    height: min(34rem, calc(100svh - var(--header-h) - 2.5rem));
-    max-height: calc(100svh - var(--header-h) - 2.5rem);
+    aspect-ratio: 1 / 1;
+    height: auto;
+    max-height: none;
   }
 
   .door-hero-slide {
@@ -2878,8 +2886,8 @@ p {
   }
 
   .door-gallery-thumb {
-    width: 5.5rem;
-    height: 7.25rem;
+    width: 4.75rem;
+    height: 4.75rem;
   }
 
   .door-tabs {

@@ -26,7 +26,13 @@ export function ProjectRow({
   return (
     <article className="project-row">
       <div className={`project-img media-frame relative h-[21.25rem] md:h-[25.625rem] ${even ? "md:order-2" : ""}`}>
-        <Image src={`/images/${image}.png`} alt={title} fill className="object-cover object-[center_57%]" sizes="(max-width: 768px) 100vw, 50vw" />
+        <Image
+          src={image.startsWith("/") ? image : `/images/${image}.png`}
+          alt={title}
+          fill
+          className="object-cover object-[center_57%]"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
       </div>
       <div>
         <h2>{title}</h2>

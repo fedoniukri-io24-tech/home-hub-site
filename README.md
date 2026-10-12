@@ -6,11 +6,19 @@
 
 ```bash
 npm install
-cp .env.example .env.local   # задайте NEXT_PUBLIC_SITE_URL для production SEO
+cp .env.example .env.local   # SITE_URL + ADMIN_USER / ADMIN_PASS
 npm run dev
 ```
 
 Відкрийте [http://localhost:3000](http://localhost:3000) — за замовчуванням шведська (`/sv`), англійська: `/en`.
+
+## Admin
+
+- URL: `/admin` (login: `/admin/login`)
+- Auth: `ADMIN_USER` / `ADMIN_PASS` in `.env.local`
+- DB: SQLite at `data/homehub.db` (auto-created + seeded from catalogue)
+- Sections: Dashboard, Products, Categories, Inquiries, Media
+- UI language: English
 
 ## SEO
 

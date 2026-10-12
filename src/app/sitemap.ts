@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { modelSlugs } from "@/data/models";
+import { modelSlugs } from "@/lib/catalog";
 import { locales, type Locale } from "@/lib/i18n";
 import { absoluteUrl, staticSeoPaths } from "@/lib/site";
 

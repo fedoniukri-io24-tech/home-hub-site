@@ -43,5 +43,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local sqlite + uploads
+/data/
+/public/uploads/*
+!/public/uploads/.gitkeep
+
 # typescript
 *.tsbuildinfo

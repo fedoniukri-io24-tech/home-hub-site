@@ -1,6 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  serverExternalPackages: ["better-sqlite3", "sharp"],
+  experimental: {
+    // Proxy buffers request bodies (default 10MB). Large multi-image uploads
+    // were truncated → "Failed to parse body as FormData".
+    proxyClientMaxBodySize: "100mb",
+    serverActions: {
+      bodySizeLimit: "100mb",
+    },
+  },
   async redirects() {
     return [
       {

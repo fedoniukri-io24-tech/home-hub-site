@@ -2,7 +2,7 @@ import { ContactSection } from "@/components/ContactSection";
 import { DoorDetailView } from "@/components/DoorDetailView";
 import { JsonLd } from "@/components/JsonLd";
 import { getDictionary } from "@/dictionaries";
-import { getModelBySlug, getModels, getRelatedModels, modelSlugs } from "@/data/models";
+import { getModelBySlug, getModels, getRelatedModels, modelSlugs } from "@/lib/catalog";
 import { formatDoorPrice } from "@/lib/formatPrice";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { breadcrumbJsonLd, productJsonLd } from "@/lib/seo/jsonLd";

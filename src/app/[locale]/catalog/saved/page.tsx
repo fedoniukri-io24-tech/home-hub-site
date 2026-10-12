@@ -2,7 +2,7 @@ import { ContactSection } from "@/components/ContactSection";
 import { PageHead } from "@/components/PageHead";
 import { SavedItemsPanel } from "@/components/SavedItemsPanel";
 import { getDictionary } from "@/dictionaries";
-import { getModels } from "@/data/models";
+import { getModels } from "@/lib/catalog";
 import { localePath, isLocale, type Locale } from "@/lib/i18n";
 import { generateLocalePageMetadata } from "@/lib/seo/generatePageMetadata";
 import { notFound } from "next/navigation";

@@ -6,6 +6,7 @@ import { useRef } from "react";
 import type { DoorModel } from "@/data/models";
 import { formatDoorPrice } from "@/lib/formatPrice";
 import { localePath, type Locale } from "@/lib/i18n";
+import { mediaUrl } from "@/lib/mediaUrl";
 import { ArrowIcon } from "./ArrowIcon";
 import { SaveModelToggle } from "./SaveModelToggle";
 
@@ -53,7 +54,7 @@ export function ProductCard({
           {model.gallery.map((key, index) => (
             <div key={`${model.slug}-${key}-${index}`} className="product-card-slide">
               <Image
-                src={`/images/${key}.png`}
+                src={mediaUrl(key)}
                 alt={index === 0 ? `${model.name} — ${model.material}` : ""}
                 fill
                 className="product-card-image"

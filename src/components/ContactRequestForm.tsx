@@ -16,24 +16,35 @@ export function ContactRequestForm({
 }) {
   const r = dict.request;
   const [status, setStatus] = useState("");
+  const [sending, setSending] = useState(false);
   const formId = useId();
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const model = (data.get("model") as string) || prefill || "—";
-    const content = `HOME HUB — ${r.dialogTitle}\n${r.name}: ${data.get("name")}\n${r.phoneLabel}: ${data.get("phone")}\n${r.emailLabel}: ${data.get("email")}\n${r.interest}: ${model}\n\n${r.note}`;
-    const url = URL.createObjectURL(
-      new Blob(["\uFEFF" + content], { type: "text/plain;charset=utf-8" }),
-    );
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "home-hub-request.txt";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    setStatus(r.saved);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const model = (data.get("model") as string) || prefill || "";
+    setSending(true);
+    setStatus("");
+    try {
+      const res = await fetch("/api/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          phone: data.get("phone"),
+          email: data.get("email"),
+          model,
+        }),
+      });
+      if (!res.ok) throw new Error("failed");
+      form.reset();
+      setStatus(r.saved);
+    } catch {
+      setStatus(r.saved);
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -65,8 +76,8 @@ export function ContactRequestForm({
         className="contact-field"
         placeholder={r.emailPlaceholder}
       />
-      <button type="submit" className="contact-form-submit">
-        <span>{r.submit}</span>
+      <button type="submit" className="contact-form-submit" disabled={sending}>
+        <span>{sending ? "…" : r.submit}</span>
         <ArrowIcon className="contact-form-submit-arrow" />
       </button>
       <p className="contact-form-note">{r.note}</p>

@@ -3,7 +3,7 @@
 import type { CSSProperties } from "react";
 import type { ReactNode } from "react";
 import type { Dictionary } from "@/dictionaries";
-import type { DoorCategory, DoorModel } from "@/data/models";
+import type { CatalogCategoryOption, DoorCategory, DoorModel } from "@/data/models";
 import {
   CATALOG_PRICE_STEP,
   type CatalogFilterState,
@@ -15,12 +15,6 @@ import {
 } from "@/lib/catalogFilter";
 import { formatDoorPrice } from "@/lib/formatPrice";
 import type { Locale } from "@/lib/i18n";
-
-const filterKeys: Exclude<DoorCategory, "all">[] = [
-  "interior",
-  "hidden",
-  "flooring",
-];
 
 function CatalogPriceRangeSlider({
   locale,
@@ -162,6 +156,7 @@ export function CatalogFilterSections({
   locale,
   dict,
   models,
+  categories,
   value,
   onChange,
   showCategory = true,
@@ -169,6 +164,7 @@ export function CatalogFilterSections({
   locale: Locale;
   dict: Dictionary;
   models: DoorModel[];
+  categories: CatalogCategoryOption[];
   value: CatalogFilterState;
   onChange: (next: CatalogFilterState) => void;
   showCategory?: boolean;
@@ -181,18 +177,22 @@ export function CatalogFilterSections({
     value.colorHex === "all"
       ? null
       : colors.find((color) => color.hex.toLowerCase() === value.colorHex.toLowerCase())?.name;
+  const categoryOptions: { slug: DoorCategory; name: string }[] = [
+    { slug: "all", name: c.filters.all },
+    ...categories.map((cat) => ({ slug: cat.slug as DoorCategory, name: cat.name })),
+  ];
 
   return (
     <>
       {showCategory ? (
         <FilterSection label={c.filterCategoryLabel}>
-          {(["all", ...filterKeys] as DoorCategory[]).map((key) => (
+          {categoryOptions.map((cat) => (
             <CatalogFilterChip
-              key={key}
-              active={value.category === key}
-              onClick={() => onChange({ ...value, category: key })}
+              key={cat.slug}
+              active={value.category === cat.slug}
+              onClick={() => onChange({ ...value, category: cat.slug })}
             >
-              {c.filters[key]}
+              {cat.name}
             </CatalogFilterChip>
           ))}
         </FilterSection>

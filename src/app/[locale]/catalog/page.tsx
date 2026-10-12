@@ -4,7 +4,7 @@ import { CatalogLegacyRedirect } from "@/components/CatalogLegacyRedirect";
 import { ContactSection } from "@/components/ContactSection";
 import { PageHead } from "@/components/PageHead";
 import { getDictionary } from "@/dictionaries";
-import { getModels } from "@/data/models";
+import { getCatalogCategories, getModels } from "@/lib/catalog";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { generateLocalePageMetadata } from "@/lib/seo/generatePageMetadata";
 import { notFound } from "next/navigation";
@@ -21,6 +21,7 @@ export default async function CatalogPage({ params }: PageProps<"/[locale]/catal
   const dict = getDictionary(locale);
   const c = dict.catalog;
   const models = getModels(locale);
+  const categories = getCatalogCategories(locale);
 
   return (
     <>
@@ -34,7 +35,12 @@ export default async function CatalogPage({ params }: PageProps<"/[locale]/catal
       />
       <Suspense fallback={null}>
         <CatalogLegacyRedirect locale={locale} />
-        <CatalogClient locale={locale} dict={dict} models={models} />
+        <CatalogClient
+          locale={locale}
+          dict={dict}
+          models={models}
+          categories={categories}
+        />
       </Suspense>
       <ContactSection dict={dict} />
     </>

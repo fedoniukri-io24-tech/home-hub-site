@@ -8,6 +8,7 @@ import type { DoorModel } from "@/data/models";
 import { formatDoorPrice } from "@/lib/formatPrice";
 import { useDoorGalleryScroll } from "@/hooks/useDoorGalleryScroll";
 import { localePath, type Locale } from "@/lib/i18n";
+import { mediaUrl } from "@/lib/mediaUrl";
 import { Pill } from "./Pill";
 import { DoorRequestPill } from "./DoorRequestPill";
 import { PhotoGalleryModal } from "./PhotoGalleryModal";
@@ -104,7 +105,7 @@ export function DoorDetailView({
             {gallery.map((key, index) => (
               <div key={`${key}-${index}`} className="door-hero-slide">
                 <Image
-                  src={`/images/${key}.png`}
+                  src={mediaUrl(key)}
                   alt={index === 0 ? model.name : ""}
                   fill
                   priority={index === 0}
@@ -148,11 +149,11 @@ export function DoorDetailView({
                 onClick={() => setActiveImage(index)}
               >
                 <Image
-                  src={`/images/${key}.png`}
+                  src={mediaUrl(key)}
                   alt=""
                   width={120}
-                  height={160}
-                  className="door-gallery-thumb-img object-contain object-center"
+                  height={120}
+                  className="door-gallery-thumb-img object-cover object-center"
                 />
               </button>
             ))}
