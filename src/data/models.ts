@@ -707,102 +707,203 @@ const raw: {
     ],
   },
   {
-    slug: "french-chevron",
-    name: "French Chevron",
-    image: "floor-chevron",
-    gallery: ["floor-chevron", "floor-chevron-room", "kitchen-marble"],
+    slug: "enstav",
+    name: "Enstav",
+    image: "/images/floors/enstav/01.jpg",
+    gallery: [
+      "/images/floors/enstav/01.jpg",
+      "/images/floors/enstav/02.jpg",
+      "/images/floors/enstav/03.jpg",
+    ],
+    category: "flooring",
+    priceSek: 2_190,
+    label: ["Golv", "Flooring"],
+    material: ["Ingenjörsparkett ek/valnöt/ask", "Engineered parquet oak/walnut/ash"],
+    finish: ["UV-lack eller olja", "UV lacquer or oil"],
+    hardware: ["1 stav · parallell läggning", "1-strip · parallel layout"],
+    colors: [
+      { hex: "#cbb89a", name: ["Naturlig ek", "Natural oak"] },
+      { hex: "#a89478", name: ["Varm ek", "Warm oak"] },
+      { hex: "#8a7358", name: ["Rökig ek", "Smoky oak"] },
+    ],
+    description: [
+      "1 stav — minimalistisk planka med pålitligt not- och spontsystem längs hela omkretsen.",
+      "1-strip — a minimalist plank with a reliable tongue-and-groove joint around the full perimeter.",
+    ],
+    detailIntro: [
+      "Enstav är flerskiktsparkett för raka, lugna golvytor. Ytskikt 3–6 mm ek, valnöt eller ask på plywoodbas — stabilt även vid temperatur- och fuktväxlingar, och kompatibelt med golvvärme upp till 28 °C.",
+      "Enstav is engineered parquet for calm, straight floors. Top layer 3–6 mm oak, walnut or ash on plywood — stable through climate swings, and compatible with underfloor heating up to 28 °C.",
+    ],
+    detailBullets: [
+      {
+        title: ["Bredder & längder", "Widths & lengths"],
+        text: [
+          "100–300 mm bredd · 500–2 490 mm längd · specialmått på beställning.",
+          "100–300 mm width · 500–2 490 mm length · custom sizes on request.",
+        ],
+      },
+      {
+        title: ["Stabil konstruktion", "Stable build"],
+        text: [
+          "Läggs direkt på avjämnat underlag med lim — utan underlagsmatta.",
+          "Installed directly onto screed with adhesive — no underlay needed.",
+        ],
+      },
+      {
+        title: ["Golvvärme", "Underfloor heating"],
+        text: [
+          "Godkänt upp till 28 °C på termostaten.",
+          "Approved up to 28 °C on the thermostat.",
+        ],
+      },
+    ],
+    specs: [
+      { label: ["Tjocklek", "Thickness"], value: ["11–22 mm (std 15 mm)", "11–22 mm (std 15 mm)"] },
+      { label: ["Bredd", "Width"], value: ["100 / 120 / 150 / 190 / 220 / 260 / 300 mm", "100 / 120 / 150 / 190 / 220 / 260 / 300 mm"] },
+      { label: ["Längd", "Length"], value: ["500–1 500 / 990–2 490 mm", "500–1 500 / 990–2 490 mm"] },
+      { label: ["Fog", "Joint"], value: ["Not och spont", "Tongue and groove"] },
+      { label: ["Golvvärme", "Underfloor heating"], value: ["Ja, upp till 28 °C", "Yes, up to 28 °C"] },
+    ],
+  },
+  {
+    slug: "chevron",
+    name: "Chevron",
+    image: "/images/floors/chevron/01.jpg",
+    gallery: [
+      "/images/floors/chevron/01.jpg",
+      "/images/floors/chevron/02.jpg",
+      "/images/floors/chevron/03.jpg",
+      "/images/floors/chevron/04.jpg",
+    ],
     category: "flooring",
     priceSek: 2_490,
     label: ["Golv", "Flooring"],
-    material: ["Ekparkett", "Oak parquet"],
-    finish: ["Naturlig ek, matt", "Natural oak, matt"],
-    hardware: ["Chevron 45°/60°", "Chevron 45°/60°"],
+    material: ["Ingenjörsparkett ek/valnöt/ask", "Engineered parquet oak/walnut/ash"],
+    finish: ["UV-lack eller olja", "UV lacquer or oil"],
+    hardware: ["Chevron 45° / 60°", "Chevron 45° / 60°"],
     colors: [
       { hex: "#d4c4ad", name: ["Naturlig ek", "Natural oak"] },
       { hex: "#c4b49a", name: ["Honungs ek", "Honey oak"] },
       { hex: "#b5a48a", name: ["Varm sand", "Warm sand"] },
     ],
     description: [
-      "Fransk chevron — plattor lagda i 45° eller 60°. Ett utsökt parkettmönster för kök och öppna ytor.",
-      "French Chevron — planks laid at 45° or 60°. An exquisite parquet pattern for kitchens and open spaces.",
+      "Chevron — plankor som möts i spets under 45° eller 60°. Ett exklusivt parkettmönster för öppna ytor.",
+      "Chevron — planks meeting at a point at 45° or 60°. An exclusive parquet pattern for open spaces.",
     ],
     detailIntro: [
-      "French Chevron är ett parkettmönster där plattorna möts i spets under 45° eller 60°. Passar både stora kök och sammanhängande boytor.",
-      "French Chevron is a parquet pattern where planks meet at a point at 45° or 60°. Suited to large kitchens and continuous living areas.",
+      "Chevron skapas genom att plankorna läggs i 45° eller 60°. Passar kök, hallar och sammanhängande boytor. Flerskiktskonstruktion med not och spont, anpassad för golvvärme.",
+      "Chevron is created by laying planks at 45° or 60°. Suited to kitchens, halls and continuous living areas. Engineered build with tongue and groove, ready for underfloor heating.",
     ],
     detailBullets: [
       {
         title: ["45° eller 60°", "45° or 60°"],
         text: [
-          "Välj vinkel efter rummets riktning och ljus.",
-          "Choose the angle to suit room direction and light.",
+          "Välj vinkel efter rummets riktning och ljusinsläpp.",
+          "Choose the angle to suit room direction and daylight.",
         ],
       },
       {
-        title: ["Flera bredder", "Multiple widths"],
+        title: ["Fyrdubbelt möte", "Quadruple meeting"],
         text: [
-          "100 / 120 / 150 mm — samt individuella mått.",
-          "100 / 120 / 150 mm — plus custom dimensions.",
-        ],
-      },
-      {
-        title: ["Quadruple-läggning", "Quadruple layout"],
-        text: [
-          "Även layout med fyra plattor i möte för rikare mönster.",
+          "Även layout med fyra plankor i möte för rikare mönster.",
           "Also available as a four-plank meeting layout for a richer pattern.",
         ],
       },
       {
-        title: ["Showroom", "Showroom"],
+        title: ["Specialmått", "Custom sizes"],
         text: [
-          "Se och känn ekens yta i vårt showroom i Stockholm.",
-          "See and feel the oak surface in our Stockholm showroom.",
+          "Standardbredder 100 / 120 / 150 mm — individuella mått på beställning.",
+          "Standard widths 100 / 120 / 150 mm — custom dimensions on request.",
         ],
       },
     ],
     specs: [
-      {
-        label: ["Tjocklek", "Thickness"],
-        value: ["11–22 mm (std 15 mm)", "11–22 mm (std 15 mm)"],
-      },
+      { label: ["Tjocklek", "Thickness"], value: ["11–22 mm (std 15 mm)", "11–22 mm (std 15 mm)"] },
       { label: ["Bredd", "Width"], value: ["100 / 120 / 150 mm", "100 / 120 / 150 mm"] },
-      {
-        label: ["Längd 45°", "Length 45°"],
-        value: ["640 / 620 / 600 mm", "640 / 620 / 600 mm"],
-      },
-      {
-        label: ["Längd 60°", "Length 60°"],
-        value: ["690 / 680 / 660 mm", "690 / 680 / 660 mm"],
-      },
-      {
-        label: ["Mått", "Dimensions"],
-        value: ["Individuella mått tillgängliga", "Custom dimensions available"],
-      },
+      { label: ["Längd 45°", "Length 45°"], value: ["640 / 620 / 600 mm", "640 / 620 / 600 mm"] },
+      { label: ["Längd 60°", "Length 60°"], value: ["690 / 680 / 660 mm", "690 / 680 / 660 mm"] },
+      { label: ["Golvvärme", "Underfloor heating"], value: ["Ja, upp till 28 °C", "Yes, up to 28 °C"] },
     ],
   },
   {
-    slug: "english-herringbone",
-    name: "English Herringbone",
-    image: "floor-herringbone",
-    gallery: ["floor-herringbone", "floor-chevron-room"],
+    slug: "chevron-51",
+    name: "Chevron 51°",
+    image: "/images/floors/chevron-51/01.jpg",
+    gallery: [
+      "/images/floors/chevron-51/01.jpg",
+      "/images/floors/chevron-51/02.jpg",
+    ],
+    category: "flooring",
+    priceSek: 2_590,
+    label: ["Golv", "Flooring"],
+    material: ["Ingenjörsparkett ek/valnöt/ask", "Engineered parquet oak/walnut/ash"],
+    finish: ["UV-lack eller olja", "UV lacquer or oil"],
+    hardware: ["Chevron 51°", "Chevron 51°"],
+    colors: [
+      { hex: "#c8b89a", name: ["Naturlig ek", "Natural oak"] },
+      { hex: "#b8a888", name: ["Ljus ek", "Light oak"] },
+      { hex: "#9a8868", name: ["Varm ek", "Warm oak"] },
+    ],
+    description: [
+      "Chevron 51° — unikt mönster där likstora plankor läggs i exakt 51° vinkel.",
+      "Chevron 51° — a unique pattern where equal-size planks are laid at a precise 51° angle.",
+    ],
+    detailIntro: [
+      "Chevron 51° ger ett stramt, rytmiskt uttryck som skiljer sig från klassisk 45°/60°-chevron. Samma tekniska bas: flerskiktsparkett, not och spont, golvvärme upp till 28 °C.",
+      "Chevron 51° gives a crisp, rhythmic look distinct from classic 45°/60° chevron. Same technical base: engineered parquet, tongue and groove, underfloor heating up to 28 °C.",
+    ],
+    detailBullets: [
+      {
+        title: ["Exakt 51°", "Exact 51°"],
+        text: [
+          "Plankor av samma storlek i en precisionsvinkel.",
+          "Equal-size planks at a precision angle.",
+        ],
+      },
+      {
+        title: ["Kompakta format", "Compact formats"],
+        text: [
+          "Bredd 120 / 150 mm · längd 380 / 350 mm.",
+          "Width 120 / 150 mm · length 380 / 350 mm.",
+        ],
+      },
+    ],
+    specs: [
+      { label: ["Tjocklek", "Thickness"], value: ["11–22 mm (std 15 mm)", "11–22 mm (std 15 mm)"] },
+      { label: ["Bredd", "Width"], value: ["120 / 150 mm", "120 / 150 mm"] },
+      { label: ["Längd", "Length"], value: ["380 / 350 mm", "380 / 350 mm"] },
+      { label: ["Vinkel", "Angle"], value: ["51°", "51°"] },
+      { label: ["Golvvärme", "Underfloor heating"], value: ["Ja, upp till 28 °C", "Yes, up to 28 °C"] },
+    ],
+  },
+  {
+    slug: "fiskben",
+    name: "Fiskben",
+    image: "/images/floors/fiskben/01.jpg",
+    gallery: [
+      "/images/floors/fiskben/01.jpg",
+      "/images/floors/fiskben/02.jpg",
+      "/images/floors/fiskben/03.jpg",
+      "/images/floors/fiskben/04.jpg",
+    ],
     category: "flooring",
     priceSek: 2_290,
     label: ["Golv", "Flooring"],
-    material: ["Ekparkett", "Oak parquet"],
-    finish: ["Naturlig ek, matt", "Natural oak, matt"],
-    hardware: ["90° fiskbens", "90° herringbone"],
+    material: ["Ingenjörsparkett ek/valnöt/ask", "Engineered parquet oak/walnut/ash"],
+    finish: ["UV-lack eller olja", "UV lacquer or oil"],
+    hardware: ["Fiskbens 90°", "Herringbone 90°"],
     colors: [
       { hex: "#cbb89a", name: ["Naturlig ek", "Natural oak"] },
       { hex: "#bba888", name: ["Ljus ek", "Light oak"] },
       { hex: "#a89478", name: ["Varm ek", "Warm oak"] },
     ],
     description: [
-      "Engelsk fiskbensparkett — tidlös klassiker med 90° läggning. Harmoniskt geometriskt mönster.",
-      "English Herringbone — a timeless classic with 90° installation. A harmonious geometric pattern.",
+      "Fiskben — tidlös parkettklassiker med plankor lagda vinkelrätt i 90°.",
+      "Herringbone — a timeless parquet classic with planks laid perpendicular at 90°.",
     ],
     detailIntro: [
-      "English Herringbone är parkettens klassiker: plattor lagda vinkelrätt i 90°. Passar sovrum, garderober och sammanhängande boytor.",
-      "English Herringbone is the classic of parquet: planks laid perpendicular at 90°. Suited to bedrooms, closets and continuous living areas.",
+      "Fiskben skapar ett karaktärsfullt, harmoniskt mönster för sovrum, vardagsrum och sammanhängande boytor. Även korgmönster och dubbelt fiskben finns som läggningsvarianter.",
+      "Herringbone creates a characterful, balanced pattern for bedrooms, living rooms and continuous living areas. Basket weave and double herringbone are available as layout variants.",
     ],
     detailBullets: [
       {
@@ -815,8 +916,8 @@ const raw: {
       {
         title: ["Varianter", "Variants"],
         text: [
-          "Även square basket och dubbel fiskbens tillgängliga.",
-          "Also available as square basket and double herringbone.",
+          "Korgmönster och dubbelt fiskben tillgängliga.",
+          "Basket weave and double herringbone available.",
         ],
       },
       {
@@ -826,29 +927,130 @@ const raw: {
           "495 / 610 / 750 mm — plus custom sizes.",
         ],
       },
+    ],
+    specs: [
+      { label: ["Tjocklek", "Thickness"], value: ["11–22 mm (std 15 mm)", "11–22 mm (std 15 mm)"] },
+      { label: ["Bredd", "Width"], value: ["100 / 120 / 150 mm", "100 / 120 / 150 mm"] },
+      { label: ["Längd", "Length"], value: ["495 / 610 / 750 mm", "495 / 610 / 750 mm"] },
+      { label: ["Mönster", "Pattern"], value: ["Fiskbens 90°", "Herringbone 90°"] },
+      { label: ["Golvvärme", "Underfloor heating"], value: ["Ja, upp till 28 °C", "Yes, up to 28 °C"] },
+    ],
+  },
+  {
+    slug: "geometric",
+    name: "Geometrisk parkett",
+    image: "/images/floors/geometric/02.jpg",
+    gallery: [
+      "/images/floors/geometric/02.jpg",
+      "/images/floors/geometric/03.jpg",
+      "/images/floors/geometric/01.jpg",
+    ],
+    category: "flooring",
+    priceSek: 3_490,
+    label: ["Golv", "Flooring"],
+    material: ["Modulär flerskiktsparkett", "Modular engineered parquet"],
+    finish: ["UV-lack eller olja · 4 mm lamell", "UV lacquer or oil · 4 mm lamella"],
+    hardware: ["Geometriska moduler", "Geometric modules"],
+    colors: [
+      { hex: "#c4b49a", name: ["Naturlig ek", "Natural oak"] },
+      { hex: "#a89070", name: ["Varm ek", "Warm oak"] },
+      { hex: "#8b7355", name: ["Mörkare ek", "Darker oak"] },
+    ],
+    description: [
+      "Geometrisk parkett — konstnärliga modulmönster som Hexagon, Lotus, Basket Weave och fler.",
+      "Geometric parquet — artistic modular patterns such as Hexagon, Lotus, Basket Weave and more.",
+    ],
+    detailIntro: [
+      "Geometrisk parkett byggs av upprepade moduler i flerskiktsparkett: 4 mm ytskikt på 11 mm fuktbeständig plywood. Mönster som Hexagon, Japanese Cherry, Lotus, Peony Rose, Basket Weave, Triwave med flera — helt skräddarsydda beställningar är möjliga.",
+      "Geometric parquet is built from repeating modules in engineered parquet: 4 mm top layer on 11 mm moisture-resistant plywood. Patterns such as Hexagon, Japanese Cherry, Lotus, Peony Rose, Basket Weave, Triwave and more — fully custom orders are possible.",
+    ],
+    detailBullets: [
       {
-        title: ["Naturlig ek", "Natural oak"],
+        title: ["Många mönster", "Many patterns"],
         text: [
-          "Matt yta där ådring och knutar syns utan överdriven glans.",
-          "Matt surface where grain and knots show without excessive gloss.",
+          "Hexagon, Lotus, Basket Weave, Triwave, Large Cubes med flera.",
+          "Hexagon, Lotus, Basket Weave, Triwave, Large Cubes and more.",
+        ],
+      },
+      {
+        title: ["4 mm lamell", "4 mm lamella"],
+        text: [
+          "Tillräckligt för flera omslipningar under golvets livstid.",
+          "Enough for several refinishes over the floor’s lifetime.",
+        ],
+      },
+      {
+        title: ["Skräddarsytt", "Bespoke"],
+        text: [
+          "Helt individuella mönster och mått på beställning.",
+          "Fully individual patterns and dimensions on request.",
         ],
       },
     ],
     specs: [
+      { label: ["Uppbyggnad", "Construction"], value: ["4 mm lamell + 11 mm plywood", "4 mm lamella + 11 mm plywood"] },
+      { label: ["Träslag", "Wood species"], value: ["Ek, valnöt, ask", "Oak, walnut, ash"] },
+      { label: ["Fog", "Joint"], value: ["Not och spont", "Tongue and groove"] },
+      { label: ["Ytbehandling", "Finish"], value: ["UV-lack / olja · borstning", "UV lacquer / oil · brushing"] },
+      { label: ["Golvvärme", "Underfloor heating"], value: ["Ja, upp till 28 °C", "Yes, up to 28 °C"] },
+    ],
+  },
+  {
+    slug: "modular",
+    name: "Modulparkett",
+    image: "/images/floors/modular/01.jpg",
+    gallery: [
+      "/images/floors/modular/01.jpg",
+      "/images/floors/modular/02.jpg",
+    ],
+    category: "flooring",
+    priceSek: 3_290,
+    label: ["Golv", "Flooring"],
+    material: ["Modulpaneler ek/valnöt", "Modular panels oak/walnut"],
+    finish: ["UV-lack eller olja", "UV lacquer or oil"],
+    hardware: ["Slottsmönster · paneler", "Palace patterns · panels"],
+    colors: [
+      { hex: "#bba888", name: ["Naturlig ek", "Natural oak"] },
+      { hex: "#9a8868", name: ["Hasselnöt", "Hazelnut"] },
+      { hex: "#7a6548", name: ["Mörk ek", "Dark oak"] },
+    ],
+    description: [
+      "Modulparkett — slottsinspirerade paneler som Rhomb, Star, Versal Big och Favorite.",
+      "Modular parquet — palace-inspired panels such as Rhomb, Star, Versal Big and Favorite.",
+    ],
+    detailIntro: [
+      "Modulparkett för sammanfogning på plats till rika ornament. Modeller i ek och valnöt — bland annat Arhidona, Brentwood, Derbi, Traversyn, Versal Big och Star — typiskt 500–900 mm paneler, specialmått 500–1 500 mm.",
+      "Modular parquet is joined on site into rich ornaments. Oak and walnut models — including Arhidona, Brentwood, Derbi, Traversyn, Versal Big and Star — typically 500–900 mm panels, custom sizes 500–1 500 mm.",
+    ],
+    detailBullets: [
       {
-        label: ["Tjocklek", "Thickness"],
-        value: ["11–22 mm (std 15 mm)", "11–22 mm (std 15 mm)"],
-      },
-      { label: ["Bredd", "Width"], value: ["100 / 120 / 150 mm", "100 / 120 / 150 mm"] },
-      { label: ["Längd", "Length"], value: ["495 / 610 / 750 mm", "495 / 610 / 750 mm"] },
-      {
-        label: ["Mönster", "Pattern"],
-        value: ["Fiskbens 90°", "Herringbone 90°"],
+        title: ["Klassiska paneler", "Classic panels"],
+        text: [
+          "Rhomb, Star, Versal Big, Favorite, Derbi med flera.",
+          "Rhomb, Star, Versal Big, Favorite, Derbi and more.",
+        ],
       },
       {
-        label: ["Mått", "Dimensions"],
-        value: ["Individuella mått tillgängliga", "Custom dimensions available"],
+        title: ["Panelformat", "Panel formats"],
+        text: [
+          "Vanliga storlekar 500×500 till 900×900 mm.",
+          "Common sizes from 500×500 to 900×900 mm.",
+        ],
       },
+      {
+        title: ["Showroom", "Showroom"],
+        text: [
+          "Se och jämför mönster i vårt showroom i Stockholm.",
+          "See and compare patterns in our Stockholm showroom.",
+        ],
+      },
+    ],
+    specs: [
+      { label: ["Panelstorlek", "Panel size"], value: ["500–900 mm (typiskt)", "500–900 mm (typical)"] },
+      { label: ["Specialmått", "Custom size"], value: ["500–1 500 mm", "500–1 500 mm"] },
+      { label: ["Träslag", "Wood species"], value: ["Ek, valnöt", "Oak, walnut"] },
+      { label: ["Fog", "Joint"], value: ["Not och spont", "Tongue and groove"] },
+      { label: ["Golvvärme", "Underfloor heating"], value: ["Ja, upp till 28 °C", "Yes, up to 28 °C"] },
     ],
   },
 ];

@@ -173,7 +173,8 @@ export function buildImagesSitemapXml(): string {
         priority: "0.9",
         images: [
           absoluteMediaUrl("/images/hero.png"),
-          absoluteMediaUrl("/images/kitchen-marble.png"),
+          absoluteMediaUrl("/images/floors/geometric/01.jpg"),
+          absoluteMediaUrl("/images/floors/chevron/01.jpg"),
         ],
       }),
     );
